@@ -4,46 +4,45 @@ public class persegi26 {
         Scanner sc = new Scanner(System.in);
         int n1, n2;
 
-        System.out.print("Masukkan nilai pertama (n1): ");
+        System.out.print("Masukkan nilai n1 : ");
         n1 = sc.nextInt();
 
-        System.out.print("Masukkan nilai kedua (n2): ");
+        System.out.print("Masukkan nilai n2 : ");
         n2 = sc.nextInt();
 
         if (n1 > n2) {
-            System.out.println("Nilai pertama harus lebih kecil dari nilai kedua!");
+            System.out.println("Nilai n1 harus lebih kecil dari n2");
         }
 
+        int ukuranKiri = n1;
+        int ukuranKanan = n2;
         String spasi = "  ";
-        int maxBaris = (n1 > n2) ? n1 : n2;
-        int selisih = maxBaris - n1;
+        int barisMaks = (ukuranKiri > ukuranKanan) ? ukuranKiri : ukuranKanan;
+        int offsetKiri = barisMaks - ukuranKiri;
 
-        for (int baris = 0; baris < maxBaris; baris++) {
-            int barisKiri = baris - selisih;
-
-            // bagian kiri
-            for (int kol = 0; kol < n1; kol++) {
-                if (barisKiri < 0 || barisKiri >= n1) {
+        for (int baris = 0; baris < barisMaks; baris++) {
+            int indeksBarisKiri = baris - offsetKiri;
+            for (int kolom = 0; kolom < ukuranKiri; kolom++) {
+                if (indeksBarisKiri < 0 || indeksBarisKiri >= ukuranKiri) {
                     System.out.print("  ");
-                } else if (barisKiri == 0 || barisKiri == n1 - 1 || kol == 0 || kol == n1 - 1) {
-                    System.out.print(n1 + " ");
+                } else if (indeksBarisKiri == 0 || indeksBarisKiri == ukuranKiri - 1 || kolom == 0 || kolom == ukuranKiri - 1) {
+                    System.out.print(ukuranKiri + " ");
                 } else {
                     System.out.print("  ");
                 }
             }
-
             System.out.print(spasi);
-
-            // bagian kanan
-            for (int kol = 0; kol < n2; kol++) {
-                if (baris == 0 || baris == n2 - 1 || kol == 0 || kol == n2 - 1) {
-                    System.out.print(n2 + " ");
+            for (int kolom = 0; kolom < ukuranKanan; kolom++) {
+                if (baris == 0 || baris == ukuranKanan - 1 || kolom == 0 || kolom == ukuranKanan - 1) {
+                    System.out.print(ukuranKanan + " ");
                 } else {
                     System.out.print("  ");
                 }
             }
-
             System.out.println();
         }
+
     }
 }
+
+
